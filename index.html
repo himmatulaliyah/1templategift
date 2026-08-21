@@ -743,6 +743,7 @@ button{
 
 .saved-item:hover{
     background:#f8fbf9;
+    
 }
 
 .saved-item:last-child{
@@ -1246,31 +1247,31 @@ button{
     margin-top:12px;
 }
 
-.outline-btn{
+.outline-btn {
+    width: 100%;
+    height: 52px;
 
-    width:100%;
+    margin-top: 10px;
 
-    height:52px;
+    border-radius: 15px;
 
-    margin-top:10px;
+    color: #fff;
+    background: #00a84f;
 
-    border-radius:15px;
+    font-size: 12px;
+    font-weight: 600;
 
-    color:#444;
+    cursor: pointer;
 
-    background:#f3f5f4;
-
-    font-size:12px;
-
-    font-weight:600;
-
-    cursor:pointer;
-
-    transition:.2s;
+    transition: .2s;
 }
 
 .outline-btn:hover{
-    background:#e9edeb;
+    background:var(--green-dark);
+    color: var(--white);
+
+    transform:
+    translateY(-2px);
 }
 
 
@@ -1297,57 +1298,47 @@ button{
     background:white;
 }
 
-#searching.active{
-    display:flex;
+#searching.active {
+    display: flex;
 }
 
-.search-loader{
+.search-loader {
+    position: relative;
 
-    position:relative;
+    width: 90px;
+    height: 90px;
 
-    width:90px;
-    height:90px;
+    display: grid;
+    place-items: center;
 
-    display:grid;
+    margin-bottom: 27px;
 
-    place-items:center;
+    border-radius: 50%;
 
-    margin-bottom:27px;
+    color: var(--green);
+    background: var(--green-light);
 
-    border-radius:30px;
-
-    color:
-    var(--green);
-
-    background:
-    var(--green-light);
-
-    font-size:30px;
+    font-size: 30px;
 }
 
-.search-loader::before{
+.search-loader::before {
+    content: "";
 
-    content:"";
+    position: absolute;
 
-    position:absolute;
+    inset: -8px;
 
-    inset:-8px;
+    border: 2px solid #b8e8ca;
+    border-top-color: var(--green);
 
-    border:
-    2px solid #b8e8ca;
+    border-radius: 50%;
 
-    border-top-color:
-    var(--green);
-
-    border-radius:50%;
-
-    animation:
-    spin 1s linear infinite;
+    animation: spin 1s linear infinite;
 }
 
-@keyframes spin{
-    to{
-        transform:rotate(360deg);
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
     }
 }
 
@@ -1627,339 +1618,432 @@ button{
     font-size:13px;
 }
 
-
 /* =========================================================
    TRACKING
 ========================================================= */
 
-#tracking{
-    padding:0;
+#tracking {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    padding: 0;
+    overflow: hidden;
+    background: #e9eeeb;
 }
 
-.map-wrapper{
 
-    position:relative;
+/* =========================================================
+   MAP CONTAINER
+========================================================= */
 
-    width:100%;
-
-    height:100vh;
-
-    overflow:hidden;
-
-    background:#e8ece9;
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #e9eeeb;
 }
 
-.map{
 
-    position:absolute;
+/* =========================================================
+   MAP
+========================================================= */
 
-    inset:0;
+.map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 
     background:
-
-    linear-gradient(
-        25deg,
-        transparent 44%,
-        #d5dad7 45%,
-        #d5dad7 48%,
-        transparent 49%
-    ),
-
-    linear-gradient(
-        150deg,
-        transparent 45%,
-        #d5dad7 46%,
-        #d5dad7 49%,
-        transparent 50%
-    ),
-
-    #e9ece9;
+        linear-gradient(
+            90deg,
+            transparent 0 24%,
+            rgba(255,255,255,.35) 24% 25%,
+            transparent 25% 74%,
+            rgba(255,255,255,.35) 74% 75%,
+            transparent 75%
+        ),
+        linear-gradient(
+            0deg,
+            transparent 0 24%,
+            rgba(255,255,255,.35) 24% 25%,
+            transparent 25% 74%,
+            rgba(255,255,255,.35) 74% 75%,
+            transparent 75%
+        ),
+        #e8edeb;
 }
 
-.road{
 
-    position:absolute;
+/* =========================================================
+   JALAN ABU-ABU
+========================================================= */
 
-    background:white;
+/* Jalan vertikal */
+.road.one {
+    position: absolute;
+    z-index: 2;
 
-    border-radius:100px;
+    width: 82px;
+    height: 120%;
+
+    left: 50%;
+    top: -10%;
+
+    transform: translateX(-50%);
+
+    background: #cbd1ce;
+
+    border-radius: 0;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(180,188,184,.45);
 }
 
-.road.one{
 
-    width:140%;
-    height:26px;
+/* Jalan horizontal / perempatan */
+.road.two {
+    position: absolute;
+    z-index: 2;
 
-    left:-20%;
-    top:45%;
+    width: 120%;
+    height: 82px;
 
-    transform:rotate(-18deg);
+    left: -10%;
+    top: 38%;
+
+    background: #cbd1ce;
+
+    border-radius: 0;
+
+    box-shadow:
+        inset 0 0 0 1px rgba(180,188,184,.45);
 }
 
-.road.two{
 
-    width:27px;
-    height:130%;
+/* =========================================================
+   LOCATION MARKERS
+========================================================= */
 
-    top:-15%;
-    left:56%;
+.map-marker {
+    position: absolute;
+    z-index: 8;
 
-    transform:rotate(14deg);
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 3px solid #fff;
+    border-radius: 50%;
+
+    color: #fff;
+    background: #252a28;
+
+    box-shadow:
+        0 5px 14px rgba(0,0,0,.18);
+
+    font-size: 13px;
 }
 
-.route-line{
 
-    position:absolute;
+/* START */
+.map-marker.start {
+    top: 65px;
+    left: calc(50% - 21px);
 
-    width:240px;
-    height:310px;
+    background: #00a84f;
 
-    left:95px;
-    top:70px;
-
-    border-right:
-    5px solid var(--green);
-
-    border-bottom:
-    5px solid var(--green);
-
-    border-radius:
-    0 0 150px 0;
-
-    transform:rotate(-20deg);
+    box-shadow:
+        0 5px 18px rgba(0,168,79,.25);
 }
 
-.map-marker{
 
-    position:absolute;
+/* END */
+.map-marker.end {
+    left: 22%;
+    top: calc(38% + 20px);
 
-    z-index:5;
+    background: #00a84f;
 
-    width:42px;
-    height:42px;
+    box-shadow:
+        0 5px 18px rgba(0,168,79,.25);
+}
 
-    display:grid;
 
-    place-items:center;
+/* =========================================================
+   TOP MAP CONTROLS
+========================================================= */
+
+.map-top {
+    position: absolute;
+    z-index: 20;
+
+    top: 15px;
+    left: 15px;
+    right: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    pointer-events: none;
+}
+
+.map-back,
+.map-label {
+    pointer-events: auto;
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+.map-back {
+    width: 42px;
+    height: 42px;
+
+    display: grid;
+    place-items: center;
+
+    border: 0;
+    border-radius: 50%;
+
+    color: #3f4442;
+    background: rgba(255,255,255,.96);
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.10);
+
+    cursor: pointer;
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+}
+
+.map-back:hover {
+    background: #fff;
+
+    transform:
+        translateX(-2px);
+}
+
+
+/* =========================================================
+   MAP LABEL
+========================================================= */
+
+.map-label {
+    min-height: 38px;
+
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 0 14px;
+
+    border-radius: 22px;
+
+    color: #333;
+    background: rgba(255,255,255,.96);
+
+    box-shadow:
+        0 5px 18px rgba(0,0,0,.08);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* =========================================================
+   BOTTOM SHEET
+========================================================= */
+
+.bottom-sheet {
+    position: absolute;
+    z-index: 30;
+
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+
+    padding: 17px 17px 18px;
+
+    border-radius: 22px;
+
+    background:
+        rgba(255,255,255,.97);
 
     border:
-    3px solid white;
-
-    border-radius:50%;
-
-    color:white;
-
-    background:#222;
+        1px solid rgba(255,255,255,.8);
 
     box-shadow:
-    0 6px 18px rgba(0,0,0,.2);
+        0 10px 35px rgba(0,0,0,.14);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
 }
 
-.map-marker.start{
 
-    top:80px;
-    left:35px;
+/* =========================================================
+   SHEET HANDLE
+========================================================= */
+
+.sheet-handle {
+    width: 34px;
+    height: 4px;
+
+    margin: 0 auto 17px;
+
+    border-radius: 10px;
+
+    background: #d6dbd8;
 }
 
-.map-marker.end{
 
-    right:38px;
-    bottom:180px;
+/* =========================================================
+   TRACKING STATUS
+========================================================= */
 
-    background:
-    var(--green);
+.tracking-status {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+
+    min-width: 0;
 }
 
-.map-driver{
 
-    position:absolute;
+/* =========================================================
+   TRACKING ICON
+========================================================= */
 
-    z-index:8;
+.tracking-icon {
+    width: 43px;
+    height: 43px;
 
-    top:210px;
-    left:110px;
+    display: grid;
+    place-items: center;
 
-    width:48px;
-    height:48px;
+    flex-shrink: 0;
 
-    display:grid;
+    border-radius: 13px;
 
-    place-items:center;
+    /* HIJAU */
+    color: #00a84f;
+    background: #edf9f1;
 
-    border-radius:50%;
-
-    color:
-    var(--green);
-
-    background:white;
-
-    box-shadow:
-    0 7px 20px rgba(0,0,0,.17);
-
-    animation:
-    driverMove 4s ease-in-out infinite alternate;
+    font-size: 15px;
 }
 
-@keyframes driverMove{
 
-    from{
-        transform:translate(0,0);
+/* =========================================================
+   TRACKING TEXT
+========================================================= */
+
+.tracking-text {
+    min-width: 0;
+    flex: 1;
+}
+
+.tracking-text strong {
+    display: block;
+
+    color: #242725;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    line-height: 1.3;
+}
+
+.tracking-text span {
+    display: block;
+
+    margin-top: 4px;
+
+    color: #999;
+
+    font-size: 9px;
+
+    line-height: 1.3;
+}
+
+
+/* =========================================================
+   ETA
+========================================================= */
+
+.tracking-time {
+    flex-shrink: 0;
+
+    /* HIJAU */
+    color: #00a84f;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 480px) {
+
+    .map-wrapper {
+        height: 100dvh;
     }
 
-    to{
-        transform:translate(105px,120px);
+    .map-top {
+        top: 12px;
+        left: 12px;
+        right: 12px;
     }
-}
 
-.map-top{
+    .map-back {
+        width: 40px;
+        height: 40px;
+    }
 
-    position:absolute;
+    .map-label {
+        min-height: 36px;
+        padding: 0 12px;
+        font-size: 9px;
+    }
 
-    z-index:20;
+    .bottom-sheet {
+        left: 8px;
+        right: 8px;
+        bottom: 8px;
 
-    top:16px;
+        padding: 15px 15px 16px;
 
-    left:16px;
-    right:16px;
+        border-radius: 20px;
+    }
 
-    display:flex;
+    .tracking-icon {
+        width: 40px;
+        height: 40px;
+    }
 
-    justify-content:space-between;
+    .tracking-text strong {
+        font-size: 11px;
+    }
 
-    align-items:center;
-}
+    .tracking-text span {
+        font-size: 8.5px;
+    }
 
-.map-back{
-
-    width:42px;
-    height:42px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:50%;
-
-    color:#444;
-
-    background:white;
-
-    box-shadow:
-    0 5px 18px rgba(0,0,0,.1);
-
-    cursor:pointer;
-}
-
-.map-label{
-
-    padding:
-    10px 14px;
-
-    border-radius:30px;
-
-    background:white;
-
-    box-shadow:
-    0 5px 18px rgba(0,0,0,.08);
-
-    font-size:10px;
-
-    font-weight:700;
-}
-
-.bottom-sheet{
-
-    position:absolute;
-
-    z-index:30;
-
-    left:10px;
-    right:10px;
-    bottom:10px;
-
-    padding:18px;
-
-    border-radius:23px;
-
-    background:
-    rgba(255,255,255,.97);
-
-    box-shadow:
-    0 10px 35px rgba(0,0,0,.15);
-
-    backdrop-filter:blur(15px);
-}
-
-.sheet-handle{
-
-    width:35px;
-    height:4px;
-
-    margin:
-    0 auto 16px;
-
-    border-radius:10px;
-
-    background:#d8dada;
-}
-
-.tracking-status{
-
-    display:flex;
-
-    align-items:center;
-
-    gap:11px;
-}
-
-.tracking-icon{
-
-    width:42px;
-    height:42px;
-
-    display:grid;
-
-    place-items:center;
-
-    border-radius:13px;
-
-    color:
-    var(--green);
-
-    background:
-    var(--green-light);
-}
-
-.tracking-text{
-    flex:1;
-}
-
-.tracking-text strong{
-
-    display:block;
-
-    font-size:12px;
-}
-
-.tracking-text span{
-
-    display:block;
-
-    margin-top:3px;
-
-    color:#999;
-
-    font-size:9px;
-}
-
-.tracking-time{
-
-    color:
-    var(--green-dark);
-
-    font-size:14px;
-
-    font-weight:700;
+    .tracking-time {
+        font-size: 13px;
+    }
 }
 
 
@@ -2437,7 +2521,7 @@ button{
 
     place-items:center;
 
-    border-radius:30px;
+    border-radius:50%;
 
     color:
     var(--green);
@@ -2798,11 +2882,11 @@ KHUSUS HARI INI
 </small>
 
 <h3>
-Mau pergi ke mana hari ini?
+Pergi ke mana hari ini?
 </h3>
 
 <p>
-Ada seseorang yang sudah menyiapkan perjalanan untukmu.
+Seseorang telah menyiapkan perjalanan.
 </p>
 
 
@@ -2869,30 +2953,6 @@ Lokasi tersimpan
 <i class="fa-solid fa-chevron-right"></i>
 
 </div>
-
-
-<div class="saved-item">
-
-<div class="saved-icon">
-<i class="fa-solid fa-heart"></i>
-</div>
-
-<div class="saved-info">
-
-<strong>
-Tempat favorit
-</strong>
-
-<span>
-Tujuan spesial
-</span>
-
-</div>
-
-<i class="fa-solid fa-chevron-right"></i>
-
-</div>
-
 
 </div>
 
@@ -3040,7 +3100,7 @@ Movie Date
 </strong>
 
 <span>
-Nonton film dan cari popcorn favorit.
+Nonton film terbaru di bioskop.
 </span>
 
 </div>
@@ -3067,7 +3127,7 @@ Food Date
 </strong>
 
 <span>
-Cari makanan enak dan makan bareng.
+Menjelajahi tempat makan dan mencoba menu baru.
 </span>
 
 </div>
@@ -3120,7 +3180,7 @@ Random Date
 </strong>
 
 <span>
-Aku yang tentuin semuanya.
+Perjalanan akan ditentukan oleh Driver.
 </span>
 
 </div>
@@ -3233,21 +3293,13 @@ id="searching"
 
 
 <div class="eyebrow">
-Sebentar...
+Tunggu Sebentar...
 </div>
 
 
 <h1 class="page-title">
-Sedang mencari<br>
-driver terbaik.
+Mencari driver terbaik.
 </h1>
-
-
-<p class="description">
-Tunggu sebentar, kita sedang
-mencari seseorang yang siap
-mengantarmu.
-</p>
 
 
 </section>
@@ -3439,13 +3491,6 @@ id="tracking"
 </div>
 
 
-<div class="map-driver">
-
-<i class="fa-solid fa-motorcycle"></i>
-
-</div>
-
-
 <div class="map-marker end">
 
 <i class="fa-solid fa-heart"></i>
@@ -3527,8 +3572,6 @@ onclick="finishJourney()"
 
 Lihat detail perjalanan
 
-<i class="fa-solid fa-chevron-up"></i>
-
 </button>
 
 
@@ -3576,11 +3619,11 @@ onclick="showScreen('home')"
 <div class="profile-info">
 
 <h2>
-Himmatul Aliyah
+Neologic Studio
 </h2>
 
 <p>
-Member sejak 2026
+Bergabung sejak 2026
 </p>
 
 </div>
@@ -3614,7 +3657,7 @@ Nama akun
 </strong>
 
 <span>
-Himmatul Aliyah
+Neologic Studio
 </span>
 
 </div>
@@ -3638,7 +3681,7 @@ Nomor telepon
 </strong>
 
 <span>
-08•• •••• ••••
+•••• •••• ••••
 </span>
 
 </div>
@@ -3723,12 +3766,7 @@ line-height:1.7;
 >
 
 Akun ini dibuat khusus untuk
-perjalanan yang sedikit berbeda
-dari biasanya.
-
-<br><br>
-
-Semoga perjalanan pertamamu
+perjalanan yang berbeda. Semoga perjalanan pertamamu
 menyenangkan.
 
 </p>
@@ -3795,7 +3833,7 @@ Detail perjalanan
 <div class="detail-row">
 
 <span>
-Jenis date
+Jenis Perjalanan
 </span>
 
 <strong id="successDate">
@@ -3829,20 +3867,6 @@ Waktu
 </strong>
 
 </div>
-
-
-<div class="detail-row">
-
-<span>
-Driver
-</span>
-
-<strong>
-Cowo Ganteng
-</strong>
-
-</div>
-
 
 </div>
 
