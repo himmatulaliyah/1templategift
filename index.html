@@ -49,8 +49,11 @@ rel="stylesheet">
     box-sizing:border-box;
 }
 
-html{
-    scroll-behavior:smooth;
+html,
+body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
 }
 
 body{
@@ -85,7 +88,8 @@ button{
     width:100%;
     max-width:500px;
 
-    min-height:100vh;
+    height:100vh;
+    min-height:0;
 
     margin:auto;
 
@@ -106,6 +110,8 @@ button{
     display:none;
 
     min-height:100vh;
+    height:100vh;
+    overflow:hidden;
 
     animation:
     pageIn .35s ease both;
@@ -919,6 +925,8 @@ button{
 .inner-page{
 
     min-height:100vh;
+    height:100vh;
+    overflow:hidden;
 
     padding:
     24px 20px 40px;
@@ -1182,6 +1190,8 @@ button{
 #question{
 
     min-height:100vh;
+    height:100vh;
+    overflow:hidden;
 
     padding:25px;
 
@@ -1282,6 +1292,8 @@ button{
 #searching{
 
     min-height:100vh;
+    height:100vh;
+    overflow:hidden;
 
     padding:30px 20px;
 
@@ -1626,6 +1638,8 @@ button{
     position: relative;
     width: 100%;
     min-height: 100vh;
+    height:100vh;
+    overflow:hidden;
     padding: 0;
     overflow: hidden;
     background: #e9eeeb;
@@ -1641,6 +1655,8 @@ button{
     width: 100%;
     height: 100vh;
     overflow: hidden;
+    min-height:100vh;
+    height:100vh;
     background: #e9eeeb;
 }
 
@@ -2161,6 +2177,8 @@ button{
     flex-direction: column;
     align-items: stretch;
 
+    overflow:hidden;
+
     overflow-y: auto;
     scroll-behavior: smooth;
     box-sizing: border-box;
@@ -2485,6 +2503,28 @@ button{
 }
 
 
+
+/* Driver */
+#driver{
+    min-height:100vh;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Account */
+#account{
+    min-height:100vh;
+    height:100vh;
+    overflow:hidden;
+}
+
+/* Chat */
+#chat{
+    min-height:100vh;
+    height:100vh;
+    overflow:hidden;
+}
+
 /* =========================================================
    SUCCESS
 ========================================================= */
@@ -2492,6 +2532,8 @@ button{
 #success{
 
     min-height:100vh;
+    height:100vh;
+    overflow:hidden;
 
     padding:30px 20px;
 
